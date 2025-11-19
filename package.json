@@ -1,0 +1,17 @@
+{
+  "name": "promo-hamburgueria",
+  "version": "1.0.0",
+  "description": "Projeto de promoção para hamburgueria com seleção de combos.",
+  "main": "src/js/app.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build process not defined'",
+    "test": "echo 'No tests defined'"
+  },
+  "author": "Seu Nome",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

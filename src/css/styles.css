@@ -1,0 +1,434 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #fafafa;
+  color: #222;
+}
+:root {
+  --brand: #b71c1c;
+  --muted: #f7f7f7;
+  --text: #222;
+  --muted-text: #666;
+  --success: #36a169;
+  --radius: 12px;
+  --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  --base-font-size: 16px;
+}
+
+header {
+  background: #b71c1c;
+  color: #fff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.logo-text {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.4px;
+}
+
+.promo-badge {
+  background: #fff;
+  color: #b71c1c;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 16px 32px;
+}
+
+.step-indicator {
+  display: flex;
+  gap: 8px;
+ 
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px 16px 32px;
+  }
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.step-indicator span {
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.step-indicator .active {
+  color: #b71c1c;
+  border-color: #b71c1c;
+  font-weight: 600;
+}
+
+.promo-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  margin-bottom: 16px;
+}
+
+.promo-card h1 {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.promo-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.promo-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e53935;
+  margin-bottom: 12px;
+}
+
+.field-group {
+  margin-bottom: 16px;
+}
+
+.field-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-card {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.1s ease, border-color 0.1s ease, transform 0.05s ease;
+}
+
+.product-card:active {
+  transform: translateY(1px);
+}
+
+.product-card.selected {
+  border-color: #e53935;
+  box-shadow: 0 4px 10px rgba(229,57,53,0.18);
+}
+
+.product-image-placeholder {
+  flex-shrink: 0;
+  width: 82px;
+  height: 82px;
+  border-radius: 8px;
+  background: #f0f0f0;
+}
+
+/* imagens dos produtos (substitui placeholder) */
+.product-image {
+  flex-shrink: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f0f0f0;
+}
+
+/* destaque para produto TIO SMASH - manter imagens do mesmo tamanho que as demais */
+.product-card.highlight { padding: 8px; }
+.product-card.highlight .image-wrap { position: relative; display: inline-block; }
+.product-card.highlight .product-image { width: 84px; height: 84px; border-radius: 8px; }
+.product-card.highlight .overlay-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+/* reduzir gap extra para manter consistência com os demais cards */
+.product-card.highlight { gap: 12px; }
+
+.product-info-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.product-info-desc {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.product-info-price {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e53935;
+}
+
+select,
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #e53935;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: transform 0.05s ease, box-shadow 0.05s ease, filter 0.15s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  filter: brightness(0.98);
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn-link {
+  font-size: 0.8rem;
+  border: none;
+  background: none;
+  color: #e53935;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+}
+
+.btn-add-inline {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  border: none;
+  background: none;
+  color: #2e7d32;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}
+
+.btn-primary[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.12);
+}
+
+/* ===== Cupom aplicado ===== */
+.coupon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.coupon.applied {
+  border-left: 6px solid #36a169;
+  background: linear-gradient(180deg, rgba(54,161,105,0.06), rgba(54,161,105,0.02));
+}
+
+.coupon-left { display:flex; align-items:center; gap:10px; }
+.coupon-icon {
+  display:inline-flex;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#36a169;
+  color:#fff;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  box-shadow:0 2px 6px rgba(54,161,105,0.18);
+}
+.coupon-text .coupon-title { font-weight:700; font-size:0.95rem; color:#123; }
+.coupon-text .coupon-code { font-size:0.9rem; color:#36a169; }
+
+.coupon-right { display:flex; align-items:center; }
+
+.summary-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  margin-bottom: 16px;
+}
+
+.summary-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 8px;
+}
+
+.summary-item-details {
+  color: #555;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.payment-options {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.payment-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.address-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.address-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.address-saved {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 720px) {
+  main {
+    padding-top: 24px;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: auto;
+    padding-inline: 24px;
+  }
+
+  .address-row.two-cols {
+    flex-direction: row;
+  }
+
+  .address-row.two-cols > div {
+    flex: 1;
+  }
+
+  .address-row.two-cols > div.small {
+    flex: 0.5;
+  }
+}
+
+.empty {
+  font-size: 0.9rem;
+  color: #777;
+}
