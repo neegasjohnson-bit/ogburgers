@@ -1,5 +1,14 @@
 const PRICE_PER_COMBO = 39.90;
 
+// Links de checkout por quantidade de combos
+const checkoutLinks = {
+  1: "https://app.paghub.io/payment/checkout/a69c8b6e-ecff-443f-9aed-e90ee5ecad44",
+  2: "https://app.paghub.io/payment/checkout/da510324-391d-419e-b5b0-b364dfe76b52",
+  3: "https://app.paghub.io/payment/checkout/5f135d42-23c4-408b-a425-ac6e5fc436c8",
+  4: "https://app.paghub.io/payment/checkout/5f2a2a21-cd79-4534-85f5-1bab97dc9051",
+  5: "https://app.paghub.io/payment/checkout/7d71b5ab-9c45-4d21-9eef-31a0dab74a12",
+};
+
 const state = {
   combos: [],
   selectedBurger1: null,
@@ -67,6 +76,7 @@ productCards.forEach(card => {
     updateContinueButtonState();
   });
 });
+
 function updateContinueButtonState() {
   if (!btnContinuar) return;
   btnContinuar.disabled = !(state.selectedBurger1 && state.selectedBurger2 && state.selectedDrink);
@@ -251,41 +261,19 @@ btnFinalizar.addEventListener('click', () => {
     return;
   }
 
-  const rua = ruaInput.value.trim();
-  const numero = numeroInput.value.trim();
-  const bairro = bairroInput.value.trim();
-  const cidade = cidadeInput.value.trim();
-  const cep = cepInput.value.trim();
-  const compl = complementoInput.value.trim();
+  // quantidade de combos no carrinho
+  const qty = state.combos.length;
 
-  const selectedPayment = document.querySelector('input[name="payment"]:checked')?.value || 'pix';
+  // verifica se existe link de checkout para essa quantidade
+  const checkoutUrl = checkoutLinks[qty];
 
-  alert(
-    'Pedido finalizado com sucesso!\n' +
-    'Pagamento: ' + selectedPayment.toUpperCase() + '\n' +
-    'Entrega em: ' + rua + ', ' + numero + ' - ' + bairro +
-    (compl ? ' (' + compl + ')' : '') +
-    ' - ' + cidade + ' - CEP: ' + cep
-  );
+  if (!checkoutUrl) {
+    alert('Limite atingido. Ajuste o pedido para até 5 promoções.');
+    return;
+  }
 
-  state.combos = [];
-  atualizarCarrinhos();
-
-  sectionPagamento.style.display = 'none';
-  sectionMontar.style.display = 'block';
-  stepPagamento.classList.remove('active');
-  stepMontar.classList.add('active');
-
-  ruaInput.value = '';
-  numeroInput.value = '';
-  bairroInput.value = '';
-  complementoInput.value = '';
-  cidadeInput.value = '';
-  cepInput.value = '';
-
-  enderecoForm.style.display = 'block';
-  enderecoSalvoBox.style.display = 'none';
-  state.addressSaved = false;
+  // redireciona para o checkout correto
+  window.location.href = checkoutUrl;
 });
 
 atualizarCarrinhos();
