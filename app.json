@@ -1,0 +1,25 @@
+{
+  "name": "ogburgers",
+  "description": "API de checkout Velana para OG Burgers",
+  "scripts": {},
+  "env": {
+    "VELANA_SECRET": {
+      "description": "Chave secreta Velana",
+      "required": true
+    },
+    "CORS_ORIGIN": {
+      "description": "Origem permitida para CORS (ex: https://meudominio.com)",
+      "value": "*"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    { "url": "heroku/nodejs" }
+  ]
+}
