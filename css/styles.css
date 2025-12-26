@@ -777,6 +777,117 @@ header.hero{
   text-align: center;
 }
 
+/* ===== FIX HERO (paths corretos + layout) ===== */
+
+/* garantir que NÃO fica sticky */
+header.hero{
+  position: relative !important;
+  top: auto !important;
+}
+
+/* fundo com imagem (ATENÇÃO: ../imgs porque o CSS está em /css) */
+.hero-bg{
+  height: 190px;
+  background: url("../imgs/hero-burgers.jpg") center/cover no-repeat !important;
+  position: relative;
+}
+
+/* overlay pra dar contraste */
+.hero-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.20), rgba(0,0,0,.55));
+}
+
+/* card branco */
+.hero-card{
+  position: relative;
+  background: #fff;
+  max-width: 980px;
+  margin: -46px auto 0;
+  border-radius: 24px 24px 0 0;
+  padding: 64px 16px 14px;
+  box-shadow: 0 -10px 24px rgba(0,0,0,.12);
+}
+
+/* logo circular central */
+.hero-logo-wrap{
+  position:absolute;
+  left:50%;
+  top:-46px;
+  transform:translateX(-50%);
+  width: 92px;
+  height: 92px;
+  border-radius: 999px;
+  background:#fff;
+  box-shadow: 0 10px 26px rgba(0,0,0,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border: 4px solid #fff;
+  z-index: 2;
+}
+
+.hero-logo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-logo-fallback{
+  display:none;
+  font-weight:800;
+  color:#b71c1c;
+  font-size:24px;
+}
+.hero-logo-wrap.no-logo .hero-logo-fallback{ display:block; }
+
+/* título central (garante que aparece) */
+.hero-title{
+  display:block !important;
+  text-align:center;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 6px 0 10px;
+  color: #111;
+}
+
+/* infos */
+.hero-info{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 10px;
+}
+
+.hero-metas{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap: 10px 14px;
+  font-size: 14px;
+  color:#333;
+}
+.hero-metas .muted{ color:#777; }
+
+/* badge centralizado */
+.hero-badge,
+#promo-badge{
+  display: block;
+  width: fit-content;
+  margin: 10px auto 0;
+  text-align: center;
+}
+
+/* mobile mais compacto */
+@media (max-width: 480px){
+  .hero-bg{ height: 160px; }
+  .hero-card{ margin-top: -38px; padding-top: 58px; }
+  .hero-title{ font-size: 22px; }
+}
+
 
 
 
